@@ -5,12 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "live-server --port=3000 src"
+    "start": "live-server --port=3000 src",
+    "lint": "eslint .",
+    "lint:fix" : "eslint . --fix"
   },
   "author": "",
   "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
     "jest": "^27.5.1",
     "live-server": "^1.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
