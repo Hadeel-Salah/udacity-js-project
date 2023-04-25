@@ -8,7 +8,7 @@ const product1 = {
   price: 2.99,
   quantity: 0,
   productId: 1,
-  image: '/images/cherry.jpg',
+  image: 'images/cherry.jpg',
 };
 
 const product2 = {
@@ -16,7 +16,7 @@ const product2 = {
   price: 1.99,
   quantity: 0,
   productId: 2,
-  image: '/images/orange.jpg',
+  image: 'images/orange.jpg',
 };
 
 const product3 = {
@@ -24,7 +24,7 @@ const product3 = {
   price: 3.99,
   quantity: 0,
   productId: 3,
-  image: '/images/strawberry.jpg',
+  image: 'images/strawberry.jpg',
 };
 
 products.push(product1, product2, product3);
@@ -61,23 +61,22 @@ function removeProductFromCart(productId) {
     cart.splice(index, 1);
   }
 }
-let totalPaid = 0;
 function cartTotal() {
-  totalPaid = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
-  return totalPaid;
+  return cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
 }
 
 function emptyCart() {
   cart = [];
-  totalPaid = 0;
 }
 
+let totalPaid = 0;
+
 function pay(amount) {
-  const total = cartTotal();
-  if (amount < total) {
-    return -(total - amount);
+  totalPaid += amount;
+  if (amount < totalPaid) {
+    return -(totalPaid - cartTotal());
   } else {
-    return amount - total;
+    return totalPaid - cartTotal();
   }
 }
 
